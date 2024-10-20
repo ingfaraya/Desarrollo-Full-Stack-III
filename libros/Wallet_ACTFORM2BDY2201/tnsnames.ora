@@ -1,0 +1,12 @@
+actform2bdy2201_high = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-santiago-1.oraclecloud.com))(connect_data=(service_name=g84b90d7219da9e_actform2bdy2201_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+actform2bdy2201_low = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-santiago-1.oraclecloud.com))(connect_data=(service_name=g84b90d7219da9e_actform2bdy2201_low.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+actform2bdy2201_medium = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-santiago-1.oraclecloud.com))(connect_data=(service_name=g84b90d7219da9e_actform2bdy2201_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+actform2bdy2201_tp = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-santiago-1.oraclecloud.com))(connect_data=(service_name=g84b90d7219da9e_actform2bdy2201_tp.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+actform2bdy2201_tpurgent = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-santiago-1.oraclecloud.com))(connect_data=(service_name=g84b90d7219da9e_actform2bdy2201_tpurgent.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+
+
