@@ -9,5 +9,5 @@ services:
     environment:
       - spring.datasource.url=jdbc:oracle:thin:@actform2bdy2201_medium?TNS_ADMIN=/app/oracle_wallet/
       - spring.datasource.username=admin
-      - spring.datasource.password=Febrero$2024
+      - spring.datasource.password=Octubre$2024
     restart: always

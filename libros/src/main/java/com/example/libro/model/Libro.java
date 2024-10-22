@@ -21,8 +21,8 @@ public class Libro extends RepresentationModel<Libro>{
     @Column(name= "titulo")
     private String titulo;
 
-    @NotBlank(message = "No puede ingresar un año vacio")
-    @Column(name= "año")
+    @NotBlank(message = "No puede ingresar un ano vacio")
+    @Column(name= "ano")
     private String ano;
 
     @NotBlank(message = "No puede ingresar un escritor vacio")
