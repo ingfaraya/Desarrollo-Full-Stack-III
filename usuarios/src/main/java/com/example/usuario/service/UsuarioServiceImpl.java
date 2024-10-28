@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    public UsuarioRepository usuarioRepository;
 
     @Override
     public List<Usuario> getAllUsuarios() {
@@ -42,5 +42,10 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Override
     public void deleteUsuario(Long id){
         usuarioRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Usuario> getUsuarioByUsername(String username) {
+        return usuarioRepository.getUsuarioByUsername(username);
     }
 }

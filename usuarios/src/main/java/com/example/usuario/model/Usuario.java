@@ -51,6 +51,10 @@ public class Usuario extends RepresentationModel<Usuario> {
         this.password = password;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public String getRole() {
         return role;
     }
