@@ -1,0 +1,36 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "LibroApplication",
+            "request": "launch",
+            "mainClass": "com.example.libro.LibroApplication",
+            "projectName": "libros"
+        },
+        {
+            "type": "java",
+            "name": "UsuarioApplication",
+            "request": "launch",
+            "mainClass": "com.example.usuario.UsuarioApplication",
+            "projectName": "usuarios"
+        }
+        ,
+        {
+            "type": "java",
+            "name": "ProductoApplication",
+            "request": "launch",
+            "mainClass": "com.example.producto.ProductoApplication",
+            "projectName": "productos"
+        }
+    ]
+}
