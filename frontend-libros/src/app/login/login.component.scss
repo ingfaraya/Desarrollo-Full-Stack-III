@@ -1,0 +1,25 @@
+.container {
+    margin-top: 50px;
+  }
+  
+  .card-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .card {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+  }
+  
+  button {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  button:hover {
+    transform: translateY(-3px);
+  }
+  

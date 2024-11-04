@@ -1,0 +1,20 @@
+.album {
+    padding-top: 30px;
+  }
+  
+  .card {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+  }
+  
+  .card-title {
+    font-weight: bold;
+  }
+  
+  .card-subtitle {
+    font-style: italic;
+  }
+  

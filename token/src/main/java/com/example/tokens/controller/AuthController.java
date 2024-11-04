@@ -19,12 +19,13 @@ public class AuthController {
     private JwtUtil jwtUtil;
 
     @PostMapping("/token")
-    public String login(@RequestBody AuthRequest authRequest) throws Exception {
+    public AuthResponse login(@RequestBody AuthRequest authRequest) throws Exception {
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
             );
-            return jwtUtil.generateToken(authRequest.getUsername());
+            String token = jwtUtil.generateToken(authRequest.getUsername());
+            return new AuthResponse(token);
         } catch (AuthenticationException e) {
             throw new Exception("Invalid username or password", e);
         }

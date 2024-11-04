@@ -1,0 +1,27 @@
+body {
+    font-size: 0.875rem;
+  }
+  
+  .sidebar {
+    position: fixed;
+    top: 56px; /* Altura de la navbar */
+    bottom: 0;
+    left: 0;
+    z-index: 100; /* Sitúa el contenido sobre la barra de navegación */
+    padding: 48px 0 0; /* Espaciado superior */
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  }
+  
+  .sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Permite desplazamiento si la altura excede */
+  }
+  
+  .main {
+    padding: 20px;
+  }
+  

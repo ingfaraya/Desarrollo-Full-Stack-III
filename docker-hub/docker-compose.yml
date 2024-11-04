@@ -1,7 +1,7 @@
 version: '1'
 services:
-  microservicio-productos:
-    image: ingfaraya/desarrollo-full-stack-3-sumativa1-productos:latest
+  microservicio-tokens:
+    image: ingfaraya/desarrollo-full-stack-3-formativa2-tokens:latest
     ports:
       - "8080:8080"
     environment:
@@ -10,8 +10,8 @@ services:
       - spring.datasource.password=Octubre$2024
     restart: always
   
-  microservicio-usuarios:
-    image: ingfaraya/desarrollo-full-stack-3-sumativa1-usuarios:latest
+  microservicio-libros:
+    image: ingfaraya/desarrollo-full-stack-3-formativa2-libros:latest
     ports:
       - "8081:8080"
     environment:
