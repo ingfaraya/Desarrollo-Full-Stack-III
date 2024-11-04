@@ -19,3 +19,9 @@ services:
       - spring.datasource.username=admin
       - spring.datasource.password=Octubre$2024
     restart: always
+  
+  frontend-libros:
+    image: ingfaraya/desarrollo-full-stack-3-formativa2-frontend:latest
+    ports:
+      - "80:80"
+    restart: always
