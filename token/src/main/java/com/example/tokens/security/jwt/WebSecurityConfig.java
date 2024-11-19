@@ -43,9 +43,9 @@ public class WebSecurityConfig {
                         )
                 )
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/error", "/auth/**").permitAll()
-                        .requestMatchers("/api/usuarios/**").authenticated()
-                        .anyRequest().authenticated()
+                    .requestMatchers("/", "/error", "/auth/**").permitAll()
+                    .requestMatchers("/api/usuarios/**", "/api/libros/**").authenticated()
+                .anyRequest().authenticated()
                 )
                 .exceptionHandling(handling -> handling
                         .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))

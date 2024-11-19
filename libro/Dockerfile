@@ -22,6 +22,6 @@ COPY --from=buildstage /app/target/libros-0.0.1-SNAPSHOT.jar /app/libros.jar
 COPY Wallet_LEGX51JUNINIVTKL /app/oracle_wallet
 
 ENV TNS_ADMIN=/app/oracle_wallet
-EXPOSE 8080
+EXPOSE 8081
 
 ENTRYPOINT [ "java", "-jar", "/app/libros.jar" ]

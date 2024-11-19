@@ -1,27 +1,105 @@
 version: '1'
 services:
   microservicio-tokens:
-    image: ingfaraya/desarrollo-full-stack-3-formativa2-tokens:latest
+    container_name: microservicio-tokens
+    image: ingfaraya/desarrollo-full-stack-3-sumativa2-tokens:latest
     ports:
       - "8080:8080"
     environment:
       - spring.datasource.url=jdbc:oracle:thin:@legx51juninivtkl_medium?TNS_ADMIN=/app/oracle_wallet/
       - spring.datasource.username=admin
       - spring.datasource.password=Octubre$2024
-    restart: always
+    networks:
+      - app-network
+    restart: on-failure
   
   microservicio-libros:
-    image: ingfaraya/desarrollo-full-stack-3-formativa2-libros:latest
+    container_name: microservicio-libros
+    image: ingfaraya/desarrollo-full-stack-3-sumativa2-libros:latest
     ports:
-      - "8081:8080"
+      - "8081:8081"
     environment:
       - spring.datasource.url=jdbc:oracle:thin:@legx51juninivtkl_medium?TNS_ADMIN=/app/oracle_wallet/
       - spring.datasource.username=admin
       - spring.datasource.password=Octubre$2024
-    restart: always
+    networks:
+      - app-network
+    restart: on-failure
+
+  microservicio-recetas:
+    container_name: microservicio-recetas
+    image: ingfaraya/desarrollo-full-stack-3-sumativa2-recetas:latest
+    ports:
+      - "8082:8082"
+    environment:
+      - spring.datasource.url=jdbc:oracle:thin:@legx51juninivtkl_medium?TNS_ADMIN=/app/oracle_wallet/
+      - spring.datasource.username=admin
+      - spring.datasource.password=Octubre$2024
+    networks:
+      - app-network
+    restart: on-failure
   
   frontend-libros:
-    image: ingfaraya/desarrollo-full-stack-3-formativa2-frontend:latest
+    container_name: frontend-libros
+    image: ingfaraya/desarrollo-full-stack-3-sumativa2-frontend:latest
     ports:
       - "80:80"
+    networks:
+      - app-network
+    restart: on-failure
+
+  sonarqube:
+    image: sonarqube:latest
+    container_name: sonarqube
+    environment:
+      - SONAR_JDBC_URL=jdbc:postgresql://db:5432/sonar
+      - SONAR_JDBC_USERNAME=sonar
+      - SONAR_JDBC_PASSWORD=sonar
+    ports:
+      - "9000:9000"
+    depends_on:
+      - db
     restart: always
+    networks:
+      - app-network
+
+  db:
+    image: postgres:latest
+    container_name: sonarqube_db
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORD=sonar
+      - POSTGRES_DB=sonar
+    volumes:
+      - ./sonarqube_db_data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - app-network
+
+  owasp-zap:
+    image: zaproxy/zap-stable:2.15.0
+    container_name: owasp_zap
+    entrypoint:
+      - sh
+      - -c
+      - |
+        while ! curl -s http://frontend-libros/login > /dev/null && curl -s http://localhost:8080/auth/token > /dev/null && curl -s http://localhost:8082/api/recetas && curl -s http://localhost:8081/api/libros > /dev/null; do
+          echo 'Esperando a que microservicio-web-recetas esté listo...'
+          sleep 5
+        done
+        zap.sh -cmd -quickurl http://frontend-libros/login -quickprogress -quickout /zap/wrk/report-web-recetas.html
+        zap.sh -cmd -quickurl http://microservicio-tokens:8080/auth/token -quickprogress -quickout /zap/wrk/report-microservicio-tokens.html
+        zap.sh -cmd -quickurl http://microservicio-libros:8081/api/libros -quickprogress -quickout /zap/wrk/report-microservicio-libros.html
+        zap.sh -cmd -quickurl http://microservicio-recetas:8082/api/recetas -quickprogress -quickout /zap/wrk/report-microservicio-recetas.html
+    volumes:
+      - ./zap-reports:/zap/wrk
+    networks:
+      - app-network
+    restart: on-failure
+
+volumes:
+  sonarqube_db_data:
+
+networks:
+  app-network:
+    driver: bridge

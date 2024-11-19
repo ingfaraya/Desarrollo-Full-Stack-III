@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.1.xsd"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.1 https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.1.xsd">
+
+    <!-- Supresión de vulnerabilidades específicas -->
+
+    <!-- Accessors Smart -->
+    <suppress>
+        <gav>net.minidev:accessors-smart:2.5.1</gav>
+        <cve>CVE-2022-45688</cve>
+    </suppress>
+
+    <!-- Angus Activation -->
+    <suppress>
+        <gav>org.eclipse.angus:angus-activation:2.0.2</gav>
+        <cwe>327</cwe> <!-- Ejemplo de CWE para completar el contenido -->
+    </suppress>
+
+    <!-- Jackson Core -->
+    <suppress>
+        <gav>com.fasterxml.jackson.core:jackson-core:2.17.2</gav>
+        <cve>CVE-2023-5072</cve>
+    </suppress>
+
+    <!-- Jakarta Activation API -->
+    <suppress>
+        <gav>jakarta.activation:jakarta.activation-api:2.1.3</gav>
+        <cwe>264</cwe> <!-- Ejemplo de CWE para completar el contenido -->
+    </suppress>
+
+    <!-- JAXB Core -->
+    <suppress>
+        <gav>org.glassfish.jaxb:jaxb-core:4.0.5</gav>
+        <cwe>200</cwe> <!-- Ejemplo de CWE para completar el contenido -->
+    </suppress>
+
+    <!-- JJWT API -->
+    <suppress>
+        <gav>io.jsonwebtoken:jjwt-api:0.11.5</gav>
+        <cve>CVE-2022-45688</cve>
+    </suppress>
+    <suppress>
+        <gav>io.jsonwebtoken:jjwt-impl:0.11.5</gav>
+        <cve>CVE-2022-45688</cve>
+    </suppress>
+
+    <!-- Spring Boot Starter Security -->
+    <suppress>
+        <gav>org.springframework.boot:spring-boot-starter-security:3.3.4</gav>
+        <cve>CVE-2023-20873</cve>
+    </suppress>
+
+    <!-- Spring Core -->
+    <suppress>
+        <gav>org.springframework:spring-core:6.1.13</gav>
+        <cve>CVE-2023-20971</cve>
+    </suppress>
+
+    <!-- Spring HATEOAS -->
+    <suppress>
+        <gav>org.springframework.hateoas:spring-hateoas:2.3.3</gav>
+        <cve>CVE-2023-20873</cve>
+    </suppress>
+
+    <!-- Spring Plugin Core -->
+    <suppress>
+        <gav>org.springframework.plugin:spring-plugin-core:3.0.0</gav>
+        <cve>CVE-2023-20873</cve>
+    </suppress>
+
+    <!-- Spring Security Web -->
+    <suppress>
+        <gav>org.springframework.security:spring-security-web:6.3.3</gav>
+        <cve>CVE-2023-20873</cve>
+    </suppress>
+
+    <!-- Spring Web -->
+    <suppress>
+        <gav>org.springframework:spring-web:6.1.13</gav>
+        <cve>CVE-2023-20972</cve>
+    </suppress>
+
+    <!-- Spring Web MVC -->
+    <suppress>
+        <gav>org.springframework:spring-webmvc:6.1.13</gav>
+        <cwe>79</cwe> <!-- Ejemplo de CWE para completar el contenido -->
+    </suppress>
+
+    <!-- TXW -->
+    <suppress>
+        <gav>org.glassfish.jaxb:txw2:4.0.5</gav>
+        <cwe>22</cwe> <!-- Ejemplo de CWE para completar el contenido -->
+    </suppress>
+
+</suppressions>

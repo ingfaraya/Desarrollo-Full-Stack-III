@@ -1,7 +1,5 @@
-# Dockerfile para el servicio de tokenss
-
 # Etapa de construcción
-FROM eclipse-temurin:22-jdk AS buildstage
+FROM eclipse-temurin:17-jdk AS buildstage
 
 RUN apt-get update && apt-get install -y maven
 
@@ -16,7 +14,7 @@ ENV TNS_ADMIN=/app/oracle_wallet
 RUN mvn clean package
 
 # Etapa de producción
-FROM eclipse-temurin:22-jdk
+FROM eclipse-temurin:17-jdk
 
 COPY --from=buildstage /app/target/tokens-0.0.1-SNAPSHOT.jar /app/tokens.jar
 COPY Wallet_LEGX51JUNINIVTKL /app/oracle_wallet
@@ -24,4 +22,4 @@ COPY Wallet_LEGX51JUNINIVTKL /app/oracle_wallet
 ENV TNS_ADMIN=/app/oracle_wallet
 EXPOSE 8080
 
-ENTRYPOINT [ "java", "-jar", "/app/tokens.jar" ]
+ENTRYPOINT ["java", "-jar", "/app/tokens.jar"]

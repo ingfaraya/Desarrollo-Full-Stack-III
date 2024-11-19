@@ -37,7 +37,7 @@ COPY --from=build /app/dist/frontend-libros/browser /usr/share/nginx/html
 
 # Copiar archivo de configuración de Nginx
 
-#COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Exponer el puerto 80 para el servidor
 
