@@ -44,7 +44,7 @@ public class WebSecurityConfig {
                 )
                 .authorizeHttpRequests((requests) -> requests
                     .requestMatchers("/", "/error", "/auth/**").permitAll()
-                    .requestMatchers("/api/usuarios/**", "/api/recetas/**", "/api/libros/**").authenticated()
+                    .requestMatchers("/api/usuarios/**", "/api/recetas/**").authenticated()
                 .anyRequest().authenticated()
                 )
                 .exceptionHandling(handling -> handling

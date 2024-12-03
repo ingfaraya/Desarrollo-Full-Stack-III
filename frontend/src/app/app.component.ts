@@ -8,7 +8,8 @@ import { RecetasComponent } from './recetas/recetas.component';
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterModule, LoginComponent, RecetasComponent],  // Importa RouterModule aquí
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html'
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'Hello, frontend';
+}

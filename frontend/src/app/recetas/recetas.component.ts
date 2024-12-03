@@ -10,8 +10,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-recetas',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './recetas.component.html',
-  styleUrls: ['./recetas.component.scss']
+  templateUrl: './recetas.component.html'
 })
 export class RecetasComponent {
   recetas: Receta[] = [];
@@ -28,7 +27,7 @@ export class RecetasComponent {
   recetaSeleccionada: Receta | null = null;
   mostrarFormulario: boolean = false;
 
-  constructor(private recetasService: RecetasService, private router: Router) {}
+  constructor(readonly recetasService: RecetasService, readonly router: Router) {}
 
   ngOnInit(): void {
     const token = localStorage.getItem('authToken');
@@ -145,11 +144,11 @@ export class RecetasComponent {
   compartirReceta(receta: any): void {
     const url = encodeURIComponent(`http://localhost/recetas/${receta.id}`);
     const text = encodeURIComponent(`Mira esta increíble receta de ${receta.nombre} que encontré:`);
+    
     const twitterShare = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
     const facebookShare = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-    const whatsappShare = `https://wa.me/?text=${text} ${url}`;
+    const whatsappShare = `https://wa.me/?text=${text}%20${url}`; // Usa %20 para asegurar codificación de espacios
   
-    // Abrir un cuadro de diálogo con opciones
     const socialMedia = window.prompt(
       '¿Dónde quieres compartir?\n1. Twitter\n2. Facebook\n3. WhatsApp',
       '1'
@@ -168,6 +167,6 @@ export class RecetasComponent {
       default:
         alert('Opción no válida');
     }
-  }
+  }  
   
 }
