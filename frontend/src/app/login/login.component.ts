@@ -15,7 +15,7 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(readonly http: HttpClient, readonly router: Router) {}
 
   login() {
     const loginData = {

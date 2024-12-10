@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private authUrl = 'http://localhost:8080/auth/token';  // URL del backend para obtener el token
+  readonly authUrl = 'http://localhost:8080/auth/token';  // URL del backend para obtener el token
 
-  constructor(private http: HttpClient) {}
+  constructor(readonly http: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
     return this.http.post<any>(this.authUrl, { username, password });
