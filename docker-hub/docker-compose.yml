@@ -2,7 +2,7 @@ version: '1'
 services:
   microservicio-tokens:
     container_name: microservicio-tokens
-    image: ingfaraya/desarrollo-full-stack-3-formativa5-tokens:latest
+    image: ingfaraya/desarrollo-full-stack-3-sumativa3-tokens:latest
     ports:
       - "8080:8080"
     environment:
@@ -15,7 +15,7 @@ services:
 
   microservicio-recetas:
     container_name: microservicio-recetas
-    image: ingfaraya/desarrollo-full-stack-3-formativa4-recetas:latest
+    image: ingfaraya/desarrollo-full-stack-3-sumativa3-recetas:latest
     ports:
       - "8082:8082"
     environment:
