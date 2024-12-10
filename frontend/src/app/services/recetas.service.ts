@@ -9,9 +9,9 @@ import { Receta } from '../models/receta.model';
   providedIn: 'root'
 })
 export class RecetasService {
-  private apiUrl = 'http://localhost:8082/api/recetas';
+  readonly apiUrl = 'http://localhost:8082/api/recetas';
 
-  constructor(private http: HttpClient) {}
+  constructor(readonly http: HttpClient) {}
 
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('authToken');

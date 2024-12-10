@@ -19,8 +19,7 @@ import java.io.IOException;
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
-    @Value("${jwt.secret}")
-    private String secret;
+    @Value("${jwt.secret}") String secret;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
