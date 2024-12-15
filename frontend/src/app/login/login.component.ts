@@ -27,7 +27,7 @@ export class LoginComponent {
       next: (response) => {
         localStorage.setItem('authToken', response.token);
         console.log('Login exitoso, redirigiendo a recetas...');
-        this.router.navigate(['/recetas']);
+        this.router.navigate(['/home']);
       },
       error: (error) => {
         console.error('Error de login:', error);
