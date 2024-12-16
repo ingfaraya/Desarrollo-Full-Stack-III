@@ -50,8 +50,28 @@ public class WebSecurityConfig {
                 .exceptionHandling(handling -> handling
                         .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
                 )
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); // Añadir el filtro JWT antes del filtro de autenticación
+                .addFilterBefore(getJwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class); // Añadir el filtro JWT antes del filtro de autenticación
         return http.build();
+    }
+
+    public JwtAuthenticationFilter getJwtAuthenticationFilter() {
+        return jwtAuthenticationFilter;
+        
+    }
+
+    public void setJwtAuthenticationFilter(JwtAuthenticationFilter jwtAuthenticationFilter) {
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+        
+    }
+
+    public CustomUserDetailsService getUserDetailsService() {
+        return userDetailsService;
+        
+    }
+
+    public void setUserDetailsService(CustomUserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+        
     }
 
     @Bean
@@ -61,7 +81,7 @@ public class WebSecurityConfig {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(new EncoderConfig().passwordEncoder());
+        auth.userDetailsService(getUserDetailsService()).passwordEncoder(new EncoderConfig().passwordEncoder());
     }
 
     @Bean
