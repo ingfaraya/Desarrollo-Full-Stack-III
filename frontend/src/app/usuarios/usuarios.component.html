@@ -1,0 +1,72 @@
+<div class="container py-5">
+    <h1 class="mb-4">Gestión de Usuarios</h1>
+  
+    <!-- Botón para agregar nuevo usuario -->
+    <div class="mb-3">
+      <button class="btn btn-primary" (click)="mostrarAgregarUsuario()">Agregar Nuevo Usuario</button>
+      <button class="btn btn-info ms-2" (click)="volverHome()">Volver a Home</button>
+    </div>
+  
+    <!-- Formulario de Usuario -->
+    <div *ngIf="mostrarFormulario" class="card mb-4 p-4">
+      <h4>{{ usuarioSeleccionado ? 'Editar Usuario' : 'Agregar Nuevo Usuario' }}</h4>
+      <form (ngSubmit)="agregarUsuario()">
+        <div class="mb-3">
+          <label for="username" class="form-label">Nombre de Usuario</label>
+          <input
+            type="text"
+            id="username"
+            [(ngModel)]="usuarioForm.username"
+            name="username"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input
+            type="password"
+            id="password"
+            [(ngModel)]="usuarioForm.password"
+            name="password"
+            class="form-control"
+            [required]="!usuarioSeleccionado"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="role" class="form-label">Rol</label>
+          <select id="role" [(ngModel)]="usuarioForm.role" name="role" class="form-select" required>
+            <option value="USER">USER</option>
+            <option value="ADMIN">ADMIN</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-success">{{ usuarioSeleccionado ? 'Actualizar' : 'Guardar' }}</button>
+        <button type="button" class="btn btn-secondary ms-2" (click)="cancelarAgregarUsuario()">Cancelar</button>
+      </form>
+    </div>
+  
+    <!-- Tabla de Usuarios -->
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.username }}</td>
+            <td>{{ usuario.role }}</td>
+            <td>
+              <button class="btn btn-primary btn-sm" (click)="editarUsuario(usuario)">Editar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
