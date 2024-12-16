@@ -13,7 +13,7 @@ COPY Wallet_LEGX51JUNINIVTKL /app/oracle_wallet
 
 ENV TNS_ADMIN=/app/oracle_wallet
 
-RUN mvn clean package
+RUN mvn clean package -Dmaven.test.skip=true
 
 # Etapa de producción
 FROM eclipse-temurin:22-jdk

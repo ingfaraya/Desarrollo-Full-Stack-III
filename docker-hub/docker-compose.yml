@@ -2,7 +2,7 @@ version: '1'
 services:
   microservicio-tokens:
     container_name: microservicio-tokens
-    image: ingfaraya/desarrollo-full-stack-3-sumativa3-tokens:latest
+    image: ingfaraya/desarrollo-full-stack-3-examenfinal-tokens:latest
     ports:
       - "8080:8080"
     environment:
@@ -15,9 +15,9 @@ services:
 
   microservicio-recetas:
     container_name: microservicio-recetas
-    image: ingfaraya/seguridad-calidad-software-sumativa3-recetas:latest
+    image: ingfaraya/desarrollo-full-stack-3-examenfinal-recetas:latest
     ports:
-      - "8082:8081"
+      - "8082:8082"
     environment:
       - spring.datasource.url=jdbc:oracle:thin:@legx51juninivtkl_medium?TNS_ADMIN=/app/oracle_wallet/
       - spring.datasource.username=admin
@@ -56,7 +56,7 @@ services:
   
   frontend:
     container_name: frontend
-    image: ingfaraya/desarrollo-full-stack-3-sumativa3-frontend:latest
+    image: ingfaraya/desarrollo-full-stack-3-examenfinal-frontend:latest
     ports:
       - "80:80"
     networks:

@@ -3,9 +3,6 @@ package com.example.recetas;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.assertj.core.api.Assertions.assertThat;
-
 @SpringBootTest
 class RecetasApplicationTest {
 

@@ -13,15 +13,25 @@ public class JwtTokenProvider {
 
     public String getUsernameFromToken(String token) {
         Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
+                .setSigningKey(getJwtSecret())
                 .parseClaimsJws(token)
                 .getBody();
         return claims.getSubject();
     }
 
+    public String getJwtSecret() {
+        return jwtSecret;
+        
+    }
+
+    public void setJwtSecret(String jwtSecret) {
+        this.jwtSecret = jwtSecret;
+        
+    }
+
     public boolean validateToken(String token) {
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
+            Jwts.parser().setSigningKey(getJwtSecret()).parseClaimsJws(token);
             return true;
         } catch (Exception e) {
             return false;

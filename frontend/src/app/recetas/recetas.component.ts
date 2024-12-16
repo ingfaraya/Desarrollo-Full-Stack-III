@@ -117,6 +117,10 @@ export class RecetasComponent {
     this.router.navigate(['/login']);
   }
 
+  volverHome(): void {
+    this.router.navigate(['/home'])
+  }
+
   mostrarAgregarReceta(): void {
     this.resetFormulario();
     this.mostrarFormulario = true;

@@ -24,45 +24,54 @@ class AuthControllerTest {
     @InjectMocks
     private AuthController authController;
 
-    private AuthRequest authRequest;
-
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-
-        // Crear un AuthRequest simulado
-        authRequest = new AuthRequest();
-        authRequest.setUsername("testuser");
-        authRequest.setPassword("password");
     }
 
     @Test
-    void testLogin_Success() throws Exception {
-        // Configurar comportamiento simulado
-        Authentication authentication = mock(Authentication.class);
-        when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class))).thenReturn(authentication);
-        when(jwtUtil.generateToken("testuser")).thenReturn("mocked-jwt-token");
+    void login_shouldReturnToken_whenCredentialsAreValid() throws Exception {
+        // Arrange
+        String username = "testUser";
+        String password = "testPassword";
+        String token = "generated-jwt-token";
 
-        // Llamar al método y verificar la respuesta
+        AuthRequest authRequest = new AuthRequest();
+        authRequest.setUsername(username);
+        authRequest.setPassword(password);
+
+        Authentication authentication = mock(Authentication.class);
+        when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class)))
+                .thenReturn(authentication);
+        when(jwtUtil.generateToken(username)).thenReturn(token);
+
+        // Act
         AuthResponse response = authController.login(authRequest);
 
+        // Assert
         assertNotNull(response);
-        assertEquals("mocked-jwt-token", response.getToken());
+        assertEquals(token, response.getToken());
         verify(authenticationManager, times(1)).authenticate(any(UsernamePasswordAuthenticationToken.class));
-        verify(jwtUtil, times(1)).generateToken("testuser");
+        verify(jwtUtil, times(1)).generateToken(username);
     }
 
     @Test
-    void testLogin_InvalidCredentials() {
-        // Configurar comportamiento simulado para lanzar una excepción
+    void login_shouldThrowException_whenCredentialsAreInvalid() {
+        // Arrange
+        String username = "testUser";
+        String password = "wrongPassword";
+
+        AuthRequest authRequest = new AuthRequest();
+        authRequest.setUsername(username);
+        authRequest.setPassword(password);
+
         when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class)))
                 .thenThrow(new RuntimeException("Invalid username or password"));
 
-        // Llamar al método y verificar que lanza una excepción
+        // Act & Assert
         Exception exception = assertThrows(Exception.class, () -> authController.login(authRequest));
-
         assertEquals("Invalid username or password", exception.getMessage());
         verify(authenticationManager, times(1)).authenticate(any(UsernamePasswordAuthenticationToken.class));
-        verify(jwtUtil, times(0)).generateToken(anyString());
+        verify(jwtUtil, never()).generateToken(anyString());
     }
 }
